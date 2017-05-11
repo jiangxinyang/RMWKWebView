@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" http-equiv="Content-Type" content="text/html">
+
+	<title>小红帽</title>
+
+	<style>
+		*{
+             font-size: 50px;
+		}
+
+        .div{
+            align:"center";
+         }
+    
+		.btn{
+            height:80px; width:80%; padding: 0px 30px 0px 30px; background-color: #0071E7; border: solid 1px #0071E7; border-radius:5px; font-size: 1em; color: white
+		}
+	</style>
+
+	<script>
+		function clear(){
+			document.getElementById('mobile').innerHTML=''
+			document.getElementById('name').innerHTML=''
+			document.getElementById('msg').innerHTML=''
+		}
+       //oc调用js的方法列表
+       function alertMobile(){
+       	       //这里已经调用过来了 但是搞不明白为什么alert方法没有响应
+        		//alert('我是上面的小黄 手机号是:13300001111')
+             document.getElementById('mobile').innerHTML='我是上面的小黄 手机号是:13300001111'
+       }
+
+      function alertName(msg){
+             document.getElementById('name').innerHTML='你好 ' + msg + ', 我也很高兴见到你'
+      }
+      
+      function alertSendMsg(num,msg){
+      	document.getElementById('msg').innerHTML='这是我的手机号:' + num + ',' + msg + '!!'
+      }
+
+      //JS响应方法列表
+      function btnClick1(){
+        window.webkit.messageHandlers.showMobile.postMessage(null)
+        //window.webkit.messageHandlers.showMobile.postMessage(null)
+      }
+
+      function btnClick2(){
+      	window.webkit.messageHandlers.showName.postMessage('xiao黄')
+      }
+
+      function btnClick3(){
+      	window.webkit.messageHandlers.showSendMsg.postMessage(['13300001111', 'Go Climbing This Weekend !!!'])
+      }
+
+	</script>
+
+</head>
+
+<body>
+    <br/>
+    <div>
+    	<label>自己写html</label>
+    </div>
+    <br/>
+    <div id="mobile"></div>
+    <div class="div">
+    	<button class="btn" type="button" onclick="btnClick1()">小红帽的手机号</button>
+    </div>
+    <br/>
+    <div id="name"></div>
+    <div class="div">
+    	<button class="btn" type="button" onclick="btnClick2()">打电话给小红帽</button>
+    </div>
+    <br/>
+    <div id="msg"></div>
+    <div class="div">
+    	<button class="btn" type="button" onclick="btnClick3()">发短信给小红帽</button>
+    </div>
+    <br/>
+
+</body>
+
+</html>
